@@ -1,0 +1,155 @@
+:root {
+    --primary: #1A3C28; /* Hijau Tua Mewah */
+    --accent: #4CAF50;  /* Hijau Segar */
+    --bg: #F9FAF4;      /* Putih Krem */
+    --text: #333;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    scroll-behavior: smooth;
+}
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+/* NAVBAR */
+.navbar { padding: 20px 0; position: sticky; top: 0; background: rgba(249, 250, 244, 0.95); backdrop-filter: blur(5px); z-index: 100; border-bottom: 1px solid #eee; }
+.nav-container { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 1.3rem; font-weight: 800; color: var(--primary); }
+.nav-links { display: flex; gap: 25px; list-style: none; }
+.nav-links a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.9rem; }
+
+/* HERO */
+.hero { padding: 60px 0; }
+.hero-container { display: flex; align-items: center; gap: 50px; }
+.hero-text { flex: 1; }
+.hero-image { flex: 1; }
+.hero-image img { width: 100%; border-radius: 20px; box-shadow: 20px 20px 0px #E8F5E9; object-fit: cover; height: 400px; }
+
+.badge { background: #d4edda; color: var(--primary); padding: 5px 12px; border-radius: 20px; font-weight: bold; font-size: 0.8rem; }
+h1 { font-size: 3rem; line-height: 1.2; margin: 20px 0; color: #111; }
+h1 em { font-family: 'Playfair Display', serif; color: var(--primary); }
+p { color: #666; margin-bottom: 30px; line-height: 1.6; }
+
+.btn-primary { background: var(--primary); color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; display: inline-block; }
+
+/* PRODUCTS (GRID SYSTEM - Yang Bagus) */
+.products { padding: 80px 0; }
+.bg-white { background: white; } /* Selang seling warna background */
+
+.section-header { margin-bottom: 40px; }
+.section-header h2 { font-size: 2rem; margin-bottom: 10px; }
+.section-header h2 em { font-family: 'Playfair Display', serif; color: var(--primary); }
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsif otomatis */
+    gap: 30px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Bayangan halus */
+    transition: transform 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.product-card:hover { transform: translateY(-10px); }
+
+.card-image { position: relative; height: 250px; overflow: hidden; }
+.card-image img { width: 100%; height: 100%; object-fit: cover; }
+.card-badge { position: absolute; top: 15px; right: 15px; background: white; padding: 5px 10px; border-radius: 8px; font-size: 0.7rem; font-weight: bold; }
+
+.card-content { padding: 20px; }
+.card-content h3 { font-size: 1.2rem; margin-bottom: 10px; }
+.card-content p { font-size: 0.9rem; color: #777; margin-bottom: 20px; height: 40px; }
+
+.card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #eee; padding-top: 15px; }
+.price { font-weight: 700; color: var(--primary); font-size: 1.1rem; }
+.btn-wa-icon { background: #E8F5E9; color: var(--primary); border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: 600; }
+.btn-wa-icon:hover { background: var(--primary); color: white; }
+
+/* CONTACT */
+.contact { padding: 80px 0; }
+.contact-box { background: var(--primary); border-radius: 30px; padding: 50px; display: flex; gap: 50px; color: white; align-items: center; }
+.contact-info { flex: 1; }
+.contact-info p { opacity: 0.8; margin-bottom: 20px; }
+.info-item { margin-bottom: 10px; font-weight: 500; display: flex; align-items: center; gap: 10px; }
+
+.contact-form-wrapper { flex: 0.8; background: white; padding: 30px; border-radius: 20px; color: #333; }
+.form-group { margin-bottom: 15px; }
+.form-group label { font-size: 0.7rem; font-weight: bold; color: #aaa; }
+.form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; margin-top: 5px; outline: none; }
+.btn-submit { width: 100%; background: var(--primary); color: white; border: none; padding: 15px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .hero-container, .contact-box { flex-direction: column; }
+    .hero-image img { height: 300px; }
+    .nav-links { display: none; }
+}
+/* --- FOOTER STYLING --- */
+footer {
+    background-color: var(--primary); /* Menggunakan warna hijau utama */
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+/* Container Ikon Sosmed */
+.social-links {
+    display: flex;
+    gap: 15px; /* Jarak antar ikon */
+    justify-content: center;
+    margin: 10px 0;
+}
+
+/* Tombol Lingkaran Ikon */
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background-color: rgba(255, 255, 255, 0.1); /* Putih transparan */
+    border-radius: 50%; /* Membuat jadi bulat */
+    color: white;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Efek saat mouse diarahkan (Hover) */
+.social-links a:hover {
+    background-color: white;
+    color: var(--primary); /* Ikon berubah jadi hijau */
+    transform: translateY(-5px); /* Naik sedikit */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.footer-copy {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    width: 100%;
+    padding-top: 20px;
+}
