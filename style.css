@@ -30,57 +30,157 @@ body {
 .hero-image { flex: 1; }
 .hero-image img { width: 100%; border-radius: 20px; box-shadow: 20px 20px 0px #E8F5E9; object-fit: cover; height: 400px; }
 
-.badge { background: #d4edda; color: var(--primary); padding: 5px 12px; border-radius: 20px; font-weight: bold; font-size: 0.8rem; }
 h1 { font-size: 3rem; line-height: 1.2; margin: 20px 0; color: #111; }
 h1 em { font-family: 'Playfair Display', serif; color: var(--primary); }
 p { color: #666; margin-bottom: 30px; line-height: 1.6; }
 
 .btn-primary { background: var(--primary); color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; display: inline-block; }
 
-/* PRODUCTS (GRID SYSTEM - Yang Bagus) */
+/* --- PRODUCTS GRID SYSTEM --- */
 .products { padding: 80px 0; }
-.bg-white { background: white; } /* Selang seling warna background */
 
 .section-header { margin-bottom: 40px; }
 .section-header h2 { font-size: 2rem; margin-bottom: 10px; }
 .section-header h2 em { font-family: 'Playfair Display', serif; color: var(--primary); }
 
+/* Style Judul Kategori */
+.category-title {
+    font-size: 1.5rem;
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-left: 15px;
+    border-left: 5px solid #4CAF50;
+    background: linear-gradient(to right, #E8F5E9, transparent);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 0 10px 10px 0;
+}
+
+/* Grid Stabilizer (Agar kotak sama tinggi) */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsif otomatis */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 30px;
+    align-items: stretch; /* Memaksa tinggi sama */
 }
 
 .product-card {
     background: white;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Bayangan halus */
-    transition: transform 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     border: 1px solid #f0f0f0;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .product-card:hover { transform: translateY(-10px); }
 
-.card-image { position: relative; height: 250px; overflow: hidden; }
+.card-image {
+    width: 100%;
+    height: 250px; /* Tinggi gambar dikunci */
+    overflow: hidden;
+    background-color: #eee;
+}
+
 .card-image img { width: 100%; height: 100%; object-fit: cover; }
-.card-badge { position: absolute; top: 15px; right: 15px; background: white; padding: 5px 10px; border-radius: 8px; font-size: 0.7rem; font-weight: bold; }
 
-.card-content { padding: 20px; }
-.card-content h3 { font-size: 1.2rem; margin-bottom: 10px; }
-.card-content p { font-size: 0.9rem; color: #777; margin-bottom: 20px; height: 40px; }
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+}
 
-.card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #eee; padding-top: 15px; }
-.price { font-weight: 700; color: var(--primary); font-size: 1.1rem; }
-.btn-wa-icon { background: #E8F5E9; color: var(--primary); border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: 600; }
+.card-content h3 { font-size: 1.2rem; margin-bottom: 10px; color: var(--primary); }
+.card-content p { 
+    font-size: 0.9rem; 
+    color: #777; 
+    margin-bottom: 20px; 
+    line-height: 1.5;
+    flex-grow: 1; 
+}
+
+/* --- CARD FOOTER (HARGA & TINGGI) --- */
+.card-footer { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    border-top: 1px solid #eee; 
+    padding-top: 15px; 
+    margin-top: auto; 
+}
+
+.price-box {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.price { 
+    font-weight: 800; 
+    color: var(--primary); 
+    font-size: 1.1rem; 
+}
+
+.height-info {
+    font-size: 0.75rem;
+    color: #666;
+    font-weight: 500;
+    background-color: #f5f5f5;
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: inline-block;
+    width: fit-content;
+}
+
+.btn-wa-icon { 
+    background: #E8F5E9; 
+    color: var(--primary); 
+    border: none; 
+    padding: 10px 18px; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    font-weight: 600; 
+    font-size: 0.85rem;
+    transition: 0.2s;
+}
+
 .btn-wa-icon:hover { background: var(--primary); color: white; }
 
-/* CONTACT */
+/* --- CONTACT SECTION --- */
 .contact { padding: 80px 0; }
-.contact-box { background: var(--primary); border-radius: 30px; padding: 50px; display: flex; gap: 50px; color: white; align-items: center; }
+.contact-box { background: var(--primary); border-radius: 30px; padding: 50px; display: flex; gap: 50px; color: white; align-items: flex-start; }
 .contact-info { flex: 1; }
 .contact-info p { opacity: 0.8; margin-bottom: 20px; }
-.info-item { margin-bottom: 10px; font-weight: 500; display: flex; align-items: center; gap: 10px; }
+
+.location-details {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.info-item {
+    margin-bottom: 20px;
+    line-height: 1.5;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: flex-start; 
+    gap: 15px;
+}
+
+.info-item .icon { font-size: 1.2rem; }
+.info-item strong {
+    font-size: 1rem;
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    display: block; 
+    margin-bottom: 5px;
+}
 
 .contact-form-wrapper { flex: 0.8; background: white; padding: 30px; border-radius: 20px; color: #333; }
 .form-group { margin-bottom: 15px; }
@@ -88,15 +188,9 @@ p { color: #666; margin-bottom: 30px; line-height: 1.6; }
 .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; margin-top: 5px; outline: none; }
 .btn-submit { width: 100%; background: var(--primary); color: white; border: none; padding: 15px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; }
 
-/* MOBILE */
-@media (max-width: 768px) {
-    .hero-container, .contact-box { flex-direction: column; }
-    .hero-image img { height: 300px; }
-    .nav-links { display: none; }
-}
 /* --- FOOTER STYLING --- */
 footer {
-    background-color: var(--primary); /* Menggunakan warna hijau utama */
+    background-color: var(--primary);
     color: white;
     padding: 40px 0;
     text-align: center;
@@ -110,39 +204,32 @@ footer {
     gap: 20px;
 }
 
-.footer-brand {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: white;
-}
+.footer-brand { font-size: 1.5rem; font-weight: bold; color: white; }
 
-/* Container Ikon Sosmed */
 .social-links {
     display: flex;
-    gap: 15px; /* Jarak antar ikon */
+    gap: 15px;
     justify-content: center;
     margin: 10px 0;
 }
 
-/* Tombol Lingkaran Ikon */
 .social-links a {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 45px;
     height: 45px;
-    background-color: rgba(255, 255, 255, 0.1); /* Putih transparan */
-    border-radius: 50%; /* Membuat jadi bulat */
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
     color: white;
     transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Efek saat mouse diarahkan (Hover) */
 .social-links a:hover {
     background-color: white;
-    color: var(--primary); /* Ikon berubah jadi hijau */
-    transform: translateY(-5px); /* Naik sedikit */
+    color: var(--primary);
+    transform: translateY(-5px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
@@ -152,4 +239,12 @@ footer {
     border-top: 1px solid rgba(255,255,255,0.1);
     width: 100%;
     padding-top: 20px;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .hero-container, .contact-box { flex-direction: column; }
+    .hero-image img { height: 300px; }
+    .nav-links { display: none; }
+    .contact-box { padding: 30px; }
 }
