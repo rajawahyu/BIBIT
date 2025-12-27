@@ -47,3 +47,33 @@ if (menuToggle) {
         });
     });
 }
+
+// --- LOGIKA INDIKATOR SLIDE (DOTS) ---
+
+// Cari semua slider track di halaman
+const sliders = document.querySelectorAll('.slider-track');
+
+sliders.forEach(slider => {
+    // Ambil elemen dots yang saudaranya slider ini
+    const dots = slider.parentElement.querySelectorAll('.dot');
+
+    // Pasang 'pendengar' saat gambar discroll/digeser
+    slider.addEventListener('scroll', () => {
+        // Hitung kita lagi di gambar keberapa?
+        // Rumus: Posisi Scroll dibagi Lebar Gambar
+        const scrollPosition = slider.scrollLeft;
+        const imageWidth = slider.offsetWidth;
+        
+        // Math.round biar hasilnya bulat (0, 1, atau 2)
+        const activeIndex = Math.round(scrollPosition / imageWidth);
+
+        // Update warna titik sesuai posisi
+        dots.forEach((dot, index) => {
+            if (index === activeIndex) {
+                dot.classList.add('active'); // Nyalakan titik
+            } else {
+                dot.classList.remove('active'); // Matikan titik
+            }
+        });
+    });
+});
