@@ -75,9 +75,53 @@ p { color: #666; margin-bottom: 30px; line-height: 1.6; }
 }
 .product-card:hover { transform: translateY(-10px); }
 
-.card-image { width: 100%; height: 250px; overflow: hidden; background-color: #eee; }
-.card-image img { width: 100%; height: 100%; object-fit: cover; }
+/* --- CARD IMAGE & SLIDER (BAGIAN PENTING) --- */
+.card-image {
+    position: relative;
+    width: 100%;
+    height: 250px; /* Tinggi gambar tetap */
+    overflow: hidden;
+    background-color: #eee;
+}
 
+/* WADAH SLIDER AGAR BISA DIGESER */
+.slider-track {
+    display: flex; /* Berjejer ke samping */
+    overflow-x: auto; /* Bisa discroll */
+    scroll-snap-type: x mandatory; /* Efek magnet */
+    width: 100%;
+    height: 100%;
+    scrollbar-width: none; /* Hilangkan scrollbar di Firefox */
+}
+
+.slider-track::-webkit-scrollbar {
+    display: none; /* Hilangkan scrollbar di Chrome */
+}
+
+/* Gambar di dalam slider */
+.slider-track img {
+    min-width: 100%; /* Lebar gambar = lebar kartu */
+    height: 100%;
+    object-fit: cover;
+    scroll-snap-align: start; /* Titik berhenti */
+}
+
+/* Tulisan kecil 1/3 di pojok */
+.slide-hint {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    pointer-events: none;
+    z-index: 2;
+}
+
+
+/* --- Card Content --- */
 .card-content { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
 .card-content h3 { font-size: 1.2rem; margin-bottom: 10px; color: var(--primary); }
 .card-content p { font-size: 0.9rem; color: #777; margin-bottom: 20px; line-height: 1.5; flex-grow: 1; }
@@ -89,21 +133,10 @@ p { color: #666; margin-bottom: 30px; line-height: 1.6; }
 .btn-wa-icon { background: #E8F5E9; color: var(--primary); border: none; padding: 10px 18px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.85rem; transition: 0.2s; }
 .btn-wa-icon:hover { background: var(--primary); color: white; }
 
-/* --- CONTACT SECTION (FIX MAPS & WARNA) --- */
+
+/* --- CONTACT SECTION --- */
 .contact { padding: 80px 0; }
-
-.contact-box { 
-    background: var(--primary);
-    border-radius: 30px; 
-    padding: 50px; 
-    display: flex; 
-    gap: 50px; 
-    align-items: flex-start;
-    overflow: hidden; /* Fix Peta Jebol */
-    position: relative;
-}
-
-/* Fix Warna Teks jadi Putih */
+.contact-box { background: var(--primary); border-radius: 30px; padding: 50px; display: flex; gap: 50px; align-items: flex-start; overflow: hidden; position: relative; }
 .contact-info { flex: 1; max-width: 100%; }
 .contact-info h2 { color: white !important; font-size: 2rem; margin-bottom: 15px; }
 .contact-info p { color: #e0e0e0 !important; margin-bottom: 25px; line-height: 1.6; }
@@ -111,19 +144,8 @@ p { color: #666; margin-bottom: 30px; line-height: 1.6; }
 .info-item { color: white !important; margin-bottom: 20px; display: flex; gap: 15px; }
 .info-item .icon { font-size: 1.2rem; }
 .info-item strong { color: #4CAF50; display: block; margin-bottom: 5px; }
-
-/* Fix Ukuran Maps */
-.map-container {
-    margin-top: 25px;
-    width: 100%;
-    height: 250px;
-    border-radius: 15px;
-    overflow: hidden;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    background: #ddd;
-}
+.map-container { margin-top: 25px; width: 100%; height: 250px; border-radius: 15px; overflow: hidden; border: 2px solid rgba(255, 255, 255, 0.3); background: #ddd; }
 .map-container iframe { width: 100% !important; height: 100% !important; border: 0; display: block; }
-
 .contact-form-wrapper { flex: 0.8; background: white; padding: 30px; border-radius: 20px; color: #333; }
 .form-group { margin-bottom: 15px; }
 .form-group label { font-size: 0.7rem; font-weight: bold; color: #aaa; }
@@ -148,53 +170,10 @@ footer { background-color: var(--primary); color: white; padding: 40px 0; text-a
     .nav-links.active { display: flex; animation: slideDown 0.3s ease forwards; }
     .nav-links li { margin: 15px 0; }
     .menu-toggle { display: flex; }
-    
     .hero-container, .contact-box { flex-direction: column; }
     .hero-image img { height: 300px; }
-    
     .contact-box { padding: 30px 20px; gap: 40px; }
     .map-container { height: 200px; }
 }
 
 @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-
-/* --- FITUR SLIDER GAMBAR ALA IG --- */
-
-.card-image {
-    position: relative; /* Agar ikon geser bisa ditaruh di atasnya */
-}
-
-.slider-track {
-    display: flex;
-    overflow-x: auto;      /* Aktifkan scroll samping */
-    scroll-snap-type: x mandatory; /* Efek magnet/snap */
-    width: 100%;
-    height: 100%;
-    
-    /* Sembunyikan scrollbar biar rapi */
-    scrollbar-width: none; /* Firefox */
-}
-
-.slider-track::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
-}
-
-.slider-track img {
-    min-width: 100%; /* 1 Gambar memenuhi 1 kotak penuh */
-    height: 100%;
-    object-fit: cover;
-    scroll-snap-align: start; /* Posisi berhenti */
-}
-
-/* Indikator kecil biar orang tau bisa digeser */
-.slide-hint {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background: rgba(0,0,0,0.5);
-    color: white;
-    padding: 2px 8px;
-    border-radius: 10px;
-    font-size: 0.7rem;
-    pointer-events: none;
-}
