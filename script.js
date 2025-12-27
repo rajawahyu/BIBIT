@@ -26,3 +26,19 @@ function kirimPesanUtama() {
     // Kirim
     window.open(`https://wa.me/${nomorHP}?text=${encodeURIComponent(pesanLengkap)}`, '_blank');
 }
+
+// --- LOGIKA HAMBURGER MENU ---
+const menuToggle = document.getElementById('mobile-menu');
+const navLinks = document.querySelector('.nav-links');
+
+// 1. Saat tombol garis tiga diklik -> Buka/Tutup Menu
+menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+// 2. Saat salah satu menu diklik (misal 'Produk') -> Tutup Menu otomatis
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+    });
+});

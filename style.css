@@ -241,10 +241,66 @@ footer {
     padding-top: 20px;
 }
 
-/* MOBILE RESPONSIVE */
+
+/* --- HAMBURGER MENU & RESPONSIVE (UPDATE) --- */
+
+/* Default: Tombol Hamburger disembunyikan di Laptop */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary);
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+/* Tampilan Khusus HP (Max 768px) */
 @media (max-width: 768px) {
-    .hero-container, .contact-box { flex-direction: column; }
+    .nav-links { 
+        display: none; /* Default sembunyi */
+        position: absolute;
+        top: 100%; /* Muncul tepat di bawah navbar */
+        left: 0;
+        width: 100%;
+        background-color: white; /* Background putih bersih */
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+        border-top: 1px solid #eee;
+    }
+
+    /* Class ini akan ditambahkan lewat JS saat tombol diklik */
+    .nav-links.active {
+        display: flex; /* Jadi muncul */
+        animation: slideDown 0.3s ease forwards;
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+
+    .menu-toggle {
+        display: flex; /* Munculkan tombol garis tiga */
+    }
+
+    /* Ubah layout hero biar gambar dan teks tumpuk */
+    .hero-container, .contact-box {
+        flex-direction: column;
+    }
+    
     .hero-image img { height: 300px; }
-    .nav-links { display: none; }
     .contact-box { padding: 30px; }
+}
+
+/* Animasi Turun Halus */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
